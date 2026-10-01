@@ -1,3 +1,4 @@
+// renderer.js
 class Renderer {
     // canvas:              object ({id: __, width: __, height: __})
     // num_curve_sections:  int
@@ -52,11 +53,10 @@ class Renderer {
         // TODO: draw at least 2 Bezier curves
         //   - variable `this.num_curve_sections` should be used for `num_edges`
         //   - variable `this.show_points` should be used to determine whether or not to render vertices
+
+        this.drawBezierCurve({x: 100, y: 100}, {x: 200, y: 400}, {x: 400, y: 400}, {x: 500, y: 100}, this.num_curve_sections, [0, 255, 0, 255], framebuffer);
+        this.drawBezierCurve({x: 100, y: 500}, {x: 200, y: 200}, {x: 400, y: 200}, {x: 500, y: 500}, this.num_curve_sections, [0, 0, 255, 255], framebuffer);
         
-        
-        // Following line is example of drawing a single line
-        // (this should be removed after you implement the curve)
-        this.drawLine({x: 100, y: 100}, {x: 600, y: 300}, [255, 0, 0, 255], framebuffer);
     }
 
     // framebuffer:  canvas ctx image data
@@ -65,7 +65,9 @@ class Renderer {
         //   - variable `this.num_curve_sections` should be used for `num_edges`
         //   - variable `this.show_points` should be used to determine whether or not to render vertices
         
-        
+        this.drawCircle({x: 200, y: 200}, 100, this.num_curve_sections, [255, 0, 0, 255], framebuffer);
+        this.drawCircle({x: 400, y: 400}, 50, this.num_curve_sections, [255, 255, 0, 255], framebuffer);
+
     }
 
     // framebuffer:  canvas ctx image data
@@ -74,12 +76,22 @@ class Renderer {
         //   - variable `this.show_points` should be used to determine whether or not to render vertices
         
         
-        // Following lines are example of drawing a single triangle
-        // (this should be removed after you implement the polygon)
         let point_a = {x:  80, y:  40};
         let point_b = {x: 320, y: 160};
         let point_c = {x: 240, y: 360};
-        this.drawTriangle(point_a, point_c, point_b, [0, 128, 128, 255], framebuffer);
+        let point_d = {x:  40, y: 240};
+        let point_e = {x: 160, y:  80};
+        let point_f = {x: 360, y: 280};
+        this.drawConvexPolygon([point_a, point_c, point_b, point_d, point_e, point_f], [0, 128, 128, 255], framebuffer);
+
+        let point_1 = {x:  80, y:  80};
+        let point_2 = {x:  80, y: 320};
+        let point_3 = {x: 320, y: 320};
+        let point_4 = {x: 320, y:  80};
+        let point_5 = {x: 200, y: 200};
+        let point_6 = {x: 150, y: 150};
+        let point_7 = {x: 250, y: 150};
+        this.drawConvexPolygon([point_1, point_2, point_3, point_4, point_5, point_6, point_7], [128, 0, 128, 255], framebuffer);
     }
 
     // framebuffer:  canvas ctx image data
@@ -88,6 +100,31 @@ class Renderer {
         //   - variable `this.num_curve_sections` should be used for `num_edges`
         //   - variable `this.show_points` should be used to determine whether or not to render vertices
         
+        //Name: KHUÊ VO
+        this.drawLine({x: 50, y: 50}, {x: 50, y: 150}, [255, 0, 0, 255], framebuffer); // Vertical line for 'K'
+        this.drawLine({x: 100, y: 50}, {x: 50, y: 150}, [255, 0, 0, 255], framebuffer); // Top diagonal line for 'K'
+        this.drawLine({x: 100, y: 150}, {x: 50, y: 50}, [255, 0, 0, 255], framebuffer); // Bottom diagonal line for 'K'
+
+        this.drawLine({x: 150, y: 50}, {x: 150, y: 150}, [0, 255, 0, 255], framebuffer); // Left vertical line for 'H'
+        this.drawLine({x: 200, y: 50}, {x: 200, y: 150}, [0, 255, 0, 255], framebuffer); // Right vertical line for 'H'
+        this.drawLine({x: 150, y: 100}, {x: 200, y: 100}, [0, 255, 0, 255], framebuffer); // Horizontal line for 'H'
+
+        this.drawLine({x: 250, y: 50}, {x: 250, y: 150}, [0, 0, 255, 255], framebuffer); // Left vertical line for 'U'
+        this.drawLine({x: 300, y: 50}, {x: 300, y: 150}, [0, 0, 255, 255], framebuffer); // Right vertical line for 'U'
+        this.drawBezierCurve({x: 250, y: 150}, {x: 300, y: 150}, [0, 0, 255, 255], framebuffer); // Bottom horizontal curve for 'U'
+
+        this.drawLine({x: 250, y: 50}, {x: 300, y: 50}, [0, 0, 255, 255], framebuffer); // Top horizontal line for 'E'
+        this.drawLine({x: 250, y: 100}, {x: 300, y: 100}, [0, 0, 255, 255], framebuffer); // Middle horizontal line for 'E'
+        this.drawLine({x: 250, y: 150}, {x: 300, y: 150}, [0, 0, 255, 255], framebuffer); // Bottom horizontal line for 'E'
+        this.drawLine({x: 250, y: 50}, {x: 250, y: 150}, [0, 0, 255, 255], framebuffer); // Left vertical line for 'E'
+        this.drawTriangle({x: 250, y: 160}, {x: 300, y: 160}, {x: 250, y: 200}, [0, 0, 255, 255], framebuffer); // Top triangle for 'E'
+
+        this.drawLine({x: 350, y: 50}, {x: 350, y: 150}, [255, 255, 0, 255], framebuffer); // Left vertical line for 'V'
+        this.drawLine({x: 400, y: 50}, {x: 400, y: 150}, [255, 255, 0, 255], framebuffer); // Right vertical line for 'V'
+        this.drawBezierCurve({x: 350, y: 150}, {x: 400, y: 150}, [255, 255, 0, 255], framebuffer); // Bottom horizontal curve for 'V'
+
+        this.drawCircle({x: 450, y: 100}, 50, this.num_curve_sections, [255, 0, 255, 255], framebuffer); // Circle for 'O'
+
         
     }
 
@@ -101,6 +138,7 @@ class Renderer {
     drawBezierCurve(p0, p1, p2, p3, num_edges, color, framebuffer) {
         // TODO: draw a sequence of straight lines to approximate a Bezier curve
         
+        drawLine(p0, p1, color, framebuffer);
         
     }
 
