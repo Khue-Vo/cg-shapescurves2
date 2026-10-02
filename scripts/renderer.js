@@ -150,7 +150,6 @@ class Renderer {
                 3 * one_minus_t * Math.pow(t, 2) * p2.x +
                 Math.pow(t, 3) * p3.x
             );
-
             let y = Math.round(
                 Math.pow(one_minus_t, 3) * p0.y +
                 3 * Math.pow(one_minus_t, 2) * t * p1.y +
@@ -162,17 +161,17 @@ class Renderer {
             this.drawLine(prev_pt, curr_pt, color, framebuffer);
 
             if (this.show_points) {
-                this.drawVertex(prev_pt, [255, 255, 255, 255], framebuffer); // Render curve evaluation points
+                this.drawVertex(prev_pt, [0, 0, 0, 255], framebuffer); // Render curve evaluation points
             }
 
             prev_pt = curr_pt;
         }
 
         if (this.show_points) {
-            this.drawVertex(prev_pt, [255, 255, 255, 255], framebuffer);
-            // Show control points p1 and p2 in a distinct color/style[cite: 1]
-            this.drawVertex({ x: Math.round(p1.x), y: Math.round(p1.y) }, [255, 255, 0, 255], framebuffer);
-            this.drawVertex({ x: Math.round(p2.x), y: Math.round(p2.y) }, [255, 255, 0, 255], framebuffer);
+            this.drawVertex(prev_pt, [0, 0, 0, 255], framebuffer);
+            // Show control points p1 and p2 in different color (dark green)
+            this.drawVertex({ x: Math.round(p1.x), y: Math.round(p1.y) }, [0, 100, 0, 255], framebuffer);
+            this.drawVertex({ x: Math.round(p2.x), y: Math.round(p2.y) }, [0, 100, 0, 255], framebuffer);
         }
     }
     
@@ -201,7 +200,7 @@ class Renderer {
             this.drawLine(p0, p1, color, framebuffer);
 
             if (this.show_points) {
-                this.drawVertex(p0, [255, 255, 255, 255], framebuffer); // Render circle vertices
+                this.drawVertex(p0, [0, 0, 0, 255], framebuffer); // Render circle vertices
             }
         }
         
@@ -224,7 +223,7 @@ class Renderer {
 
         if (this.show_points) {
             for (let v of vertex_list) {
-                this.drawVertex(v, [255, 255, 255, 255], framebuffer); // Render polygon vertices
+                this.drawVertex(v, [0, 0, 0, 255], framebuffer); // Render polygon vertices
             }
         }
         
