@@ -113,9 +113,8 @@ class Renderer {
         this.drawLine({x: 200, y: 50}, {x: 200, y: 150}, [255, 0, 0, 255], framebuffer); // Right vertical line for 'H'
         this.drawLine({x: 150, y: 100}, {x: 200, y: 100}, [255, 0, 0, 255], framebuffer); // Horizontal line for 'H'
 
-        this.drawLine({x: 250, y: 50}, {x: 250, y: 150}, [255, 0, 0, 255], framebuffer); // Left vertical line for 'U'
-        this.drawLine({x: 300, y: 50}, {x: 300, y: 150}, [255, 0, 0, 255], framebuffer); // Right vertical line for 'U'
-        this.drawBezierCurve({x: 250, y: 150}, {x: 300, y: 150}, [255, 0, 0, 255], framebuffer); // Bottom horizontal curve for 'U'
+        this.drawBezierCurve({x: 250, y: 150}, {x: 250, y: 55}, {x: 263, y: 52}, {x: 275, y: 50},this.num_curve_sections, [255, 0, 0, 255], framebuffer); // Left curve line for 'U'
+        this.drawBezierCurve({x: 300, y: 150}, {x: 300, y: 55}, {x: 287, y: 52}, {x: 275, y: 50},this.num_curve_sections, [255, 0, 0, 255], framebuffer); // Right curve line for 'U'
 
         this.drawLine({x: 350, y: 50}, {x: 400, y: 50}, [255, 0, 0, 255], framebuffer); // Top horizontal line for 'E'
         this.drawLine({x: 350, y: 100}, {x: 400, y: 100}, [255, 0, 0, 255], framebuffer); // Middle horizontal line for 'E'
@@ -125,7 +124,6 @@ class Renderer {
 
         this.drawLine({x: 450, y: 150}, {x: 475, y: 50}, [255, 0, 0, 255], framebuffer); // Left vertical line for 'V'
         this.drawLine({x: 475, y: 50}, {x: 500, y: 150}, [255, 0, 0, 255], framebuffer); // Right vertical line for 'V'
-        this.drawBezierCurve({x: 450, y: 150}, {x: 500, y: 150}, [255, 0, 0, 255], framebuffer); // Bottom horizontal curve for 'V'
 
         this.drawCircle({x: 550, y: 100}, 50, this.num_curve_sections, [255, 0, 0, 255], framebuffer); // Circle for 'O'
     }
