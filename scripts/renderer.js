@@ -54,8 +54,8 @@ class Renderer {
         //   - variable `this.num_curve_sections` should be used for `num_edges`
         //   - variable `this.show_points` should be used to determine whether or not to render vertices
 
-        this.drawBezierCurve({x: 100, y: 250}, {x: 200, y: 50}, {x: 300, y: 250}, {x: 400, y: 75}, this.num_curve_sections, [255, 0, 0, 255], framebuffer);
-        this.drawBezierCurve({x: 300, y: 500}, {x: 400, y: 300}, {x: 600, y: 440}, {x: 700, y: 300}, this.num_curve_sections, [0, 0, 255, 255], framebuffer);
+        this.drawBezierCurve({x: 100, y: 250}, {x: 300, y: 300}, {x: 400, y: 200}, {x: 600, y: 250}, this.num_curve_sections, [255, 0, 0, 255], framebuffer);
+        this.drawBezierCurve({x: 300, y: 500}, {x: 425, y: 250}, {x: 575, y: 750}, {x: 700, y: 500}, this.num_curve_sections, [0, 0, 255, 255], framebuffer);
         
     }
 
