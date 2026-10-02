@@ -55,7 +55,7 @@ class Renderer {
         //   - variable `this.show_points` should be used to determine whether or not to render vertices
 
         this.drawBezierCurve({x: 100, y: 250}, {x: 200, y: 50}, {x: 300, y: 250}, {x: 400, y: 75}, this.num_curve_sections, [255, 0, 0, 255], framebuffer);
-        this.drawBezierCurve({x: 100, y: 500}, {x: 200, y: 200}, {x: 400, y: 200}, {x: 500, y: 500}, this.num_curve_sections, [0, 0, 255, 255], framebuffer);
+        this.drawBezierCurve({x: 300, y: 500}, {x: 400, y: 300}, {x: 600, y: 440}, {x: 700, y: 300}, this.num_curve_sections, [0, 0, 255, 255], framebuffer);
         
     }
 
@@ -145,7 +145,7 @@ class Renderer {
             let t = i / num_edges;
             let one_minus_t = 1 - t;
 
-            // Cubic Bezier parametric formula[cite: 4]
+            // Cubic Bezier parametric formula
             let x = Math.round(
                 Math.pow(one_minus_t, 3) * p0.x +
                 3 * Math.pow(one_minus_t, 2) * t * p1.x +
@@ -164,7 +164,7 @@ class Renderer {
             this.drawLine(prev_pt, curr_pt, color, framebuffer);
 
             if (this.show_points) {
-                this.drawVertex(prev_pt, [255, 255, 255, 255], framebuffer); // Render curve evaluation points[cite: 1]
+                this.drawVertex(prev_pt, [255, 255, 255, 255], framebuffer); // Render curve evaluation points
             }
 
             prev_pt = curr_pt;
@@ -191,7 +191,7 @@ class Renderer {
 
         for (let i = 0; i < num_edges; i++) {
             let phi = i * delta_angle;
-            // Polar to Cartesian coordinate conversion[cite: 3]
+            // Polar to Cartesian coordinate conversion
             let x = Math.round(center.x + radius * Math.cos(phi));
             let y = Math.round(center.y + radius * Math.sin(phi));
             vertices.push({ x: x, y: y });
@@ -203,7 +203,7 @@ class Renderer {
             this.drawLine(p0, p1, color, framebuffer);
 
             if (this.show_points) {
-                this.drawVertex(p0, [255, 255, 255, 255], framebuffer); // Render circle vertices[cite: 1]
+                this.drawVertex(p0, [255, 255, 255, 255], framebuffer); // Render circle vertices
             }
         }
         
@@ -216,17 +216,17 @@ class Renderer {
         // TODO: draw a sequence of triangles to form a convex polygon
         if (vertex_list.length < 5) return;
 
-        // Triangulate convex polygon using triangle fan from v0[cite: 2]
+        // Triangulate convex polygon using triangle fan from v0
         let v0 = vertex_list[0];
         for (let i = 1; i < vertex_list.length - 1; i++) {
             let v1 = vertex_list[i];
             let v2 = vertex_list[i + 1];
-            this.drawTriangle(v0, v1, v2, color, framebuffer); // Draw filled triangle[cite: 2]
+            this.drawTriangle(v0, v1, v2, color, framebuffer); // Draw filled triangle
         }
 
         if (this.show_points) {
             for (let v of vertex_list) {
-                this.drawVertex(v, [255, 255, 255, 255], framebuffer); // Render polygon vertices[cite: 1]
+                this.drawVertex(v, [255, 255, 255, 255], framebuffer); // Render polygon vertices
             }
         }
         
